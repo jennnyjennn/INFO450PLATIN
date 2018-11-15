@@ -25,7 +25,9 @@ int main()
 			result = false;
 
 			cout << "Enter a word to translate: " << endl;
-			scanf("%49s", word);
+			scanf("%49s", word); // can cause buffer overflow, idk how to fix
+
+
 			//cin.getline(word, 50);
 
 
@@ -41,7 +43,8 @@ int main()
 			//}
 			
 			// this only executes when word is between 47 and 49 --- if its greater than 49 it terminates
-			if (strlen(word) > 47)
+			// i think it terminates bc im using scanf
+			if (strlen(word) >= 48)
 			{
 				result = true;
 				cout << "Word cannot be translated. Word is too long. " << endl;
@@ -62,6 +65,8 @@ int main()
 		if (result == false)
 		translateToPigLatin(word);
 
+		cout << "Translation: " << word << endl;
+
 		cout << "\n";
 		cout << "Need to translate another word? enter Y to continue " << endl;
 
@@ -71,11 +76,13 @@ int main()
 		// need to clear the input buffer before asking for another word
 		cin.ignore();
 		cin.clear();
+		
 
 
 	} while (answer == 'Y' || answer == 'y');
 
 	cout << "Good Bye!" << endl;
+	system("pause");
 
 }
 
@@ -145,7 +152,6 @@ void translateToPigLatin(char arr[50])
 	}
 
 	// loop checks if word starts with a consonant or vowel
-
 	if (result == false)
 	{
 		while (*ptr2 != '\0')
@@ -179,7 +185,6 @@ void translateToPigLatin(char arr[50])
 
 	}
 
-	cout << "Translation: " << arr << endl;
 }
 
 
