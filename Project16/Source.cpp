@@ -17,7 +17,7 @@ int main()
 
 	int count = 0;
 	bool result = false;
-	
+
 	do
 	{
 
@@ -32,7 +32,7 @@ int main()
 
 
 			lowercaseIt(word);
-			
+
 			// after I added scanf this commented portion no longer is needed 
 
 			// scanf will not allow a user to enter a space or null
@@ -41,7 +41,7 @@ int main()
 			//	result = true;
 			//	cout << "Empty string! - Nothing to Translate. " << endl;
 			//}
-			
+
 			// this only executes when word is between 47 and 49 --- if its greater than 49 it terminates
 			// i think it terminates bc im using scanf
 			if (strlen(word) >= 48)
@@ -49,7 +49,7 @@ int main()
 				result = true;
 				cout << "Word cannot be translated. Word is too long. " << endl;
 			}
-			
+
 			if (result == false)
 			{
 				if (checkValid(word) == true)
@@ -61,11 +61,12 @@ int main()
 			cout << "\n";
 
 		} while (result == true);
-		
-		if (result == false)
-		translateToPigLatin(word);
 
-		cout << "Translation: " << word << endl;
+		if (result == false)
+		{
+			translateToPigLatin(word);
+			cout << "Translation: " << word << endl;
+		}
 
 		cout << "\n";
 		cout << "Need to translate another word? enter Y to continue " << endl;
@@ -76,7 +77,7 @@ int main()
 		// need to clear the input buffer before asking for another word
 		cin.ignore();
 		cin.clear();
-		
+
 
 
 	} while (answer == 'Y' || answer == 'y');
@@ -186,6 +187,3 @@ void translateToPigLatin(char arr[50])
 	}
 
 }
-
-
-
